@@ -23,6 +23,7 @@ function onSearchInput(e) {
   } else {
     return fetchCountries(query).then(result => {
       if (result.status === 404) {
+        refs.countryList.innerHTML = '';
         Notify.failure('Oops, there is no country with that name');
         return;
       }
