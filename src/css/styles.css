@@ -12,6 +12,15 @@ body {
   line-height: 1.5;
 }
 
+ul {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style: none;
+}
+
 #search-box {
   font: inherit;
   padding: 8px;
@@ -21,8 +30,12 @@ body {
   position: relative;
 }
 
-.preview-card{
-  display: inline-flex;
+.preview-card {
+  display: flex;
+  align-items: center;
 }
 
-
+.country-list {
+  display: flex;
+  flex-direction: column;
+}

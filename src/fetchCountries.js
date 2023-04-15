@@ -3,5 +3,5 @@ export default function fetchCountries(name) {
   const fields = '?fields=name,capital,population,flags,languages';
   return fetch(`${BASE_URL}${name}${fields}`)
     .then(response => response.json())
-    .catch(e => console.log);
+    .catch(console.log);
 }
