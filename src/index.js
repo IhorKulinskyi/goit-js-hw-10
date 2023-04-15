@@ -20,48 +20,49 @@ function onSearchInput(e) {
     refs.countryList.innerHTML = '';
     return;
   } else {
-    return fetchCountries(e.target.value.trim()).then(updateCountryList);
+    return console.log(fetchCountries(e.target.value.trim()));
+    // return fetchCountries(e.target.value.trim()).then(updateCountryList);
   }
 }
 
-function updateCountryList(countries) {
-  refs.countryList.innerHTML = '';
-  if (countries.length > 10) {
-    Notify.info('Too many matches found. Please enter a more specific name.');
-    return;
-  }
-  if (countries.length <= 10 && countries.length >= 2) {
-    countries.forEach(country => updateCountryPreviewInfo(country));
-  } else {
-    countries.forEach(country => updateCountryInfo(country));
-  }
-}
+// function updateCountryList(countries) {
+//   refs.countryList.innerHTML = '';
+//   if (countries.length > 10) {
+//     Notify.info('Too many matches found. Please enter a more specific name.');
+//     return;
+//   }
+//   if (countries.length <= 10 && countries.length >= 2) {
+//     countries.forEach(country => updateCountryPreviewInfo(country));
+//   } else {
+//     countries.forEach(country => updateCountryInfo(country));
+//   }
+// }
 
-function updateCountryInfo(country) {
-  refs.countryList.insertAdjacentHTML(
-    'beforeend',
-    `<div class="country-card">
-    <h2 class="country-name">${country.name.official}</h2>
-    <img src="${
-      country.flags.svg
-    }" width="180" alt="Country Image" class="country-image">
-    <div class="country-info">
-      <p><strong>Capital:</strong>${country.capital.join(', ')}</p>
-      <p><strong>Population:</strong>${country.population}</p>
-      <p><strong>Languages:</strong>${Object.values(country.languages).join(
-        ', '
-      )}</p>
-    </div>
-  </div>`
-  );
-}
+// function updateCountryInfo(country) {
+//   refs.countryList.insertAdjacentHTML(
+//     'beforeend',
+//     `<div class="country-card">
+//     <h2 class="country-name">${country.name.official}</h2>
+//     <img src="${
+//       country.flags.svg
+//     }" width="180" alt="Country Image" class="country-image">
+//     <div class="country-info">
+//       <p><strong>Capital:</strong>${country.capital.join(', ')}</p>
+//       <p><strong>Population:</strong>${country.population}</p>
+//       <p><strong>Languages:</strong>${Object.values(country.languages).join(
+//         ', '
+//       )}</p>
+//     </div>
+//   </div>`
+//   );
+// }
 
-function updateCountryPreviewInfo(country) {
-  refs.countryList.insertAdjacentHTML(
-    'beforeend',
-    `<div class="preview-card">
-    <img src="${country.flags.svg}" alt="Country Flag" width="30" class="country-flag">
-    <h3 class="country-name">${country.name.official}</h3>
-  </div>`
-  );
-}
+// function updateCountryPreviewInfo(country) {
+//   refs.countryList.insertAdjacentHTML(
+//     'beforeend',
+//     `<div class="preview-card">
+//     <img src="${country.flags.svg}" alt="Country Flag" width="30" class="country-flag">
+//     <h3 class="country-name">${country.name.official}</h3>
+//   </div>`
+//   );
+// }
