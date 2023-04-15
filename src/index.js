@@ -54,9 +54,9 @@ function updateCountryInfo(country) {
       country.flags.svg
     }" width="180" alt="Country Image" class="country-image">
     <div class="country-info">
-      <p><strong>Capital:</strong>${country.capital.join(', ')}</p>
-      <p><strong>Population:</strong>${country.population}</p>
-      <p><strong>Languages:</strong>${Object.values(country.languages).join(
+      <p><strong>Capital:</strong> ${country.capital.join(', ')}</p>
+      <p><strong>Population:</strong> ${country.population}</p>
+      <p><strong>Languages:</strong> ${Object.values(country.languages).join(
         ', '
       )}</p>
     </div>
