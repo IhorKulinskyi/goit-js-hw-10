@@ -16,7 +16,7 @@ const debouncedOnInput = debounce(onSearchInput, DEBOUNCE_DELAY);
 refs.input.addEventListener('input', debouncedOnInput);
 
 function onSearchInput(e) {
-  const query =e.target.value.trim();
+  const query = e.target.value.trim();
   if (query === '') {
     refs.countryList.innerHTML = '';
     return;
@@ -41,7 +41,7 @@ function updateCountryList(countries) {
   if (countries.length <= 10 && countries.length >= 2) {
     countries.forEach(country => updateCountryPreviewInfo(country));
   } else {
-    countries.forEach(country => updateCountryInfo(country));
+    updateCountryInfo(countries[0]);
   }
 }
 
@@ -65,7 +65,6 @@ function updateCountryInfo(country) {
   );
 }
 
-
 function updateCountryPreviewInfo(country) {
   refs.countryList.insertAdjacentHTML(
     'beforeend',
@@ -76,12 +75,11 @@ function updateCountryPreviewInfo(country) {
   );
 
   const lastCountry = refs.countryList.lastElementChild;
-  lastCountry.addEventListener('click', function() {
+  lastCountry.addEventListener('click', () => {
     refs.input.value = country.name.official;
-    onSearchInput({target: {value: country.name.official}});
+    onSearchInput({ target: { value: country.name.official } });
   });
 }
-
 
 function roundPopulation(population) {
   var billion = 1000000000;
@@ -89,16 +87,15 @@ function roundPopulation(population) {
   var thousand = 1000;
 
   if (population >= billion) {
-    var roundedPopulation = Math.round(population / billion * 10) / 10;
-    return roundedPopulation + " billion";
+    var roundedPopulation = Math.round((population / billion) * 10) / 10;
+    return roundedPopulation + ' billion';
   } else if (population >= million) {
-    var roundedPopulation = Math.round(population / million * 10) / 10;
-    return roundedPopulation + " million";
+    var roundedPopulation = Math.round((population / million) * 10) / 10;
+    return roundedPopulation + ' million';
   } else if (population >= thousand) {
-    var roundedPopulation = Math.round(population / thousand * 10) / 10;
-    return roundedPopulation + " thousand";
+    var roundedPopulation = Math.round((population / thousand) * 10) / 10;
+    return roundedPopulation + ' thousand';
   } else {
-    return population + " people";
+    return population + ' people';
   }
 }
-
