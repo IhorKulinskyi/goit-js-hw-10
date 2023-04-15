@@ -46,6 +46,7 @@ function updateCountryList(countries) {
 }
 
 function updateCountryInfo(country) {
+  const roundedPopulation = roundPopulation(country.population);
   refs.countryList.insertAdjacentHTML(
     'beforeend',
     `<li><div class="country-card">
@@ -55,7 +56,7 @@ function updateCountryInfo(country) {
     }" width="180" alt="Country Image" class="country-image">
     <div class="country-info">
       <p><strong>Capital:</strong> ${country.capital.join(', ')}</p>
-      <p><strong>Population:</strong> ${country.population}</p>
+      <p><strong>Population:</strong> ${roundedPopulation}</p>
       <p><strong>Languages:</strong> ${Object.values(country.languages).join(
         ', '
       )}</p>
@@ -73,3 +74,23 @@ function updateCountryPreviewInfo(country) {
   </div></li>`
   );
 }
+
+function roundPopulation(population) {
+  var billion = 1000000000;
+  var million = 1000000;
+  var thousand = 1000;
+
+  if (population >= billion) {
+    var roundedPopulation = Math.round(population / billion * 10) / 10;
+    return roundedPopulation + " billion";
+  } else if (population >= million) {
+    var roundedPopulation = Math.round(population / million * 10) / 10;
+    return roundedPopulation + " million";
+  } else if (population >= thousand) {
+    var roundedPopulation = Math.round(population / thousand * 10) / 10;
+    return roundedPopulation + " thousand";
+  } else {
+    return population + " people";
+  }
+}
+
