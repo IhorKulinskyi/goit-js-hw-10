@@ -33,6 +33,7 @@ li {
 .preview-card {
   display: flex;
   align-items: center;
+  cursor: pointer;
 }
 
 .country-list {

@@ -65,6 +65,7 @@ function updateCountryInfo(country) {
   );
 }
 
+
 function updateCountryPreviewInfo(country) {
   refs.countryList.insertAdjacentHTML(
     'beforeend',
@@ -73,7 +74,14 @@ function updateCountryPreviewInfo(country) {
     <h3 class="country-name">${country.name.official}</h3>
   </div></li>`
   );
+
+  const lastCountry = refs.countryList.lastElementChild;
+  lastCountry.addEventListener('click', function() {
+    refs.input.value = country.name.official;
+    onSearchInput({target: {value: country.name.official}});
+  });
 }
+
 
 function roundPopulation(population) {
   var billion = 1000000000;
