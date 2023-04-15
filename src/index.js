@@ -16,11 +16,12 @@ const debouncedOnInput = debounce(onSearchInput, DEBOUNCE_DELAY);
 refs.input.addEventListener('input', debouncedOnInput);
 
 function onSearchInput(e) {
-  if (e.target.value.trim() === '') {
+  const query =e.target.value.trim();
+  if (query === '') {
     refs.countryList.innerHTML = '';
     return;
   } else {
-    return fetchCountries(e.target.value.trim()).then(result => {
+    return fetchCountries(query).then(result => {
       if (result.status === 404) {
         Notify.failure('Oops, there is no country with that name');
         return;
